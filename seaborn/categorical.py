@@ -2347,6 +2347,11 @@ def barplot(
         legend=legend,
     )
 
+    if order is not None:
+        for element in order:
+            if element not in p.plot_data[p.orient].unique():
+                raise ValueError(f"Element {element} not in the data {p.plot_data[p.orient].unique()}.")
+
     if ax is None:
         ax = plt.gca()
 
